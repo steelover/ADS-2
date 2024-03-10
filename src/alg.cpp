@@ -22,28 +22,28 @@ uint64_t fact(uint16_t n) {
     }
 }
 
-double calcitem(double x, uint16_t n) { return (pown(x, n) / fact(n)); }
+double calcItem(double x, uint16_t n) { return (pown(x, n) / fact(n)); }
 
 double expn(double x, uint16_t count) {
     double summ = 0;
-    for (uint16_t a = 0; a < count; a++) {
-        summ += pown(x, a) / fact(a);
+    for (uint16_t a = 0; a < count + 1; a++) {
+        summ += calcItem(x, a);
     }
     return summ;
 }
 
 double sinn(double x, uint16_t count) {
     double summ = 0;
-    for (uint16_t a = 1; a < count - 1; a++) {
-        summ += pown(-1, a - 1) * (pown(x, 2 * a - 1) / fact(2 * a - 1));
+    for (uint16_t a = 1; a < count + 1; a++) {
+        summ += pown(-1, a - 1) * calcItem(x, 2 * a - 1);
     }
     return summ;
 }
 
 double cosn(double x, uint16_t count) {
     double summ = 0;
-    for (uint16_t a = 1; a < count - 1; a++) {
-        summ += pown(-1, a - 1) * (pown(x, 2 * a - 2) / fact(2 * a - 2));
+    for (uint16_t a = 1; a < count + 1; a++) {
+        summ += pown(-1, a - 1) * calcItem(x, 2 * a - 2);
     }
     return summ;
 }
