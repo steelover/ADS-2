@@ -1,6 +1,6 @@
 // Copyright 2022 NNTU-CS
-#include <cstdint>
-#include "alg.h"
+#include <iostream>
+using namespace std;
 
 double pown(double value, uint16_t n) {
     double exponent = 1;
@@ -26,8 +26,8 @@ double calcitem(double x, uint16_t n) { return (pown(x, n) / fact(n)); }
 
 double expn(double x, uint16_t count) {
     double summ = 0;
-    for (uint16_t a = 0; a < count + 1; a++) {
-        summ += calcitem(x, a);
+    for (uint16_t a = 0; a < count; a++) {
+        summ += pown(x, a) / fact(a);
     }
     return summ;
 }
@@ -35,7 +35,7 @@ double expn(double x, uint16_t count) {
 double sinn(double x, uint16_t count) {
     double summ = 0;
     for (uint16_t a = 1; a < count - 1; a++) {
-        summ += pown(-1, a - 1) * calcitem(x, 2 * a - 1);
+        summ += pown(-1, a - 1) * (pown(x, 2 * a - 1) / fact(2 * a - 1));
     }
     return summ;
 }
@@ -43,8 +43,7 @@ double sinn(double x, uint16_t count) {
 double cosn(double x, uint16_t count) {
     double summ = 0;
     for (uint16_t a = 1; a < count - 1; a++) {
-        summ += pown(-1, a - 1) * calcitem(x, 2 * a - 2);
+        summ += pown(-1, a - 1) * (pown(x, 2 * a - 2) / fact(2 * a - 2));
     }
     return summ;
 }
-
