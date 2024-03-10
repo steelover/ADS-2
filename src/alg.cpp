@@ -1,6 +1,6 @@
 // Copyright 2022 NNTU-CS
-#include <iostream>
-using namespace std;
+#include <cstdint>
+#include "alg.h"
 
 double pown(double value, uint16_t n) {
     double exponent = 1;
